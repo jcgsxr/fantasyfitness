@@ -1,0 +1,109 @@
+PODS:
+  - AFNetworking (2.5.0):
+    - AFNetworking/NSURLConnection (= 2.5.0)
+    - AFNetworking/NSURLSession (= 2.5.0)
+    - AFNetworking/Reachability (= 2.5.0)
+    - AFNetworking/Security (= 2.5.0)
+    - AFNetworking/Serialization (= 2.5.0)
+    - AFNetworking/UIKit (= 2.5.0)
+  - AFNetworking/NSURLConnection (2.5.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.0)
+  - AFNetworking/Security (2.5.0)
+  - AFNetworking/Serialization (2.5.0)
+  - AFNetworking/UIKit (2.5.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - BButton (4.0.2)
+  - Bolts (1.1.3)
+  - BSKeyboardControls (2.2)
+  - CocoaLumberjack (1.6.5.1):
+    - CocoaLumberjack/Core (= 1.6.5.1)
+    - CocoaLumberjack/Extensions (= 1.6.5.1)
+  - CocoaLumberjack/Core (1.6.5.1)
+  - CocoaLumberjack/Extensions (1.6.5.1):
+    - CocoaLumberjack/Core
+  - CrashlyticsFramework (2.2.5.2)
+  - DAKeyboardControl (2.2.0)
+  - Facebook-iOS-SDK (3.21.1):
+    - Bolts (~> 1.0)
+  - IAPManager (0.2.4)
+  - JASidePanels (1.3.2)
+  - Kiwi (2.3.1)
+  - NewRelicAgent (3.412)
+  - NSDate+TimeAgo (1.0.3)
+  - NSLogger (1.5)
+  - NSLogger-CocoaLumberjack-connector (1.3):
+    - CocoaLumberjack
+    - NSLogger
+  - NSTimer-Blocks (0.0.1)
+  - OHHTTPStubs (2.0.0)
+  - Orbiter (2.0.3):
+    - AFNetworking (~> 2.1)
+  - SDWebImage (3.7.1):
+    - SDWebImage/Core (= 3.7.1)
+  - SDWebImage/Core (3.7.1)
+  - SSZipArchive (0.3.2)
+  - SVProgressHUD (1.1.2)
+  - TPKeyboardAvoiding (1.2.4)
+  - UIAlertView-Blocks (1.0)
+  - UIImage-Categories (0.0.1)
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.5)
+  - BButton
+  - BSKeyboardControls (~> 2.0)
+  - CocoaLumberjack (~> 1.6.2)
+  - CrashlyticsFramework (~> 2.2)
+  - DAKeyboardControl (~> 2.2.0)
+  - Facebook-iOS-SDK (~> 3.17)
+  - IAPManager (~> 0.2)
+  - JASidePanels (~> 1.3.2)
+  - Kiwi
+  - NewRelicAgent (~> 3.324)
+  - NSDate+TimeAgo (~> 1.0)
+  - NSLogger (~> 1.1)
+  - NSLogger-CocoaLumberjack-connector (~> 1.3)
+  - NSTimer-Blocks (~> 0.0.1)
+  - OHHTTPStubs (~> 2.0.0)
+  - Orbiter (~> 2.0)
+  - SDWebImage (~> 3.7)
+  - SSZipArchive (~> 0.3.1)
+  - SVProgressHUD (~> 1.0)
+  - TPKeyboardAvoiding (~> 1.2)
+  - UIAlertView-Blocks (~> 1.0)
+  - UIImage-Categories (~> 0.0.1)
+
+SPEC CHECKSUMS:
+  AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
+  BButton: eab327e143be2730c81a22467cc016488a125162
+  Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
+  BSKeyboardControls: c9aa1bdbb5ecd454aa3d0b2279f79c5dc4b6c6ad
+  CocoaLumberjack: baf4a09a3bcbdfea3363556a90104e026d3504e2
+  CrashlyticsFramework: 4e91082f3019bea7e718e1b67b0a3b56729dbc5d
+  DAKeyboardControl: 723b8854d230f6d0c07d4a52a7f1683f422db9f5
+  Facebook-iOS-SDK: 18c26e86ab25c17854a2ee2a8f60562099c6600f
+  IAPManager: 2c493d7d239996a118187801cf302aab0dc0658b
+  JASidePanels: ca943907d88a0738c80755204c6098969d43e4e9
+  Kiwi: 73e1400209055ee9c8ba78c6012b6b642d0fb9f7
+  NewRelicAgent: 5b293148e4ecbcc660630a1001d0a8b0fadaad87
+  NSDate+TimeAgo: f3533e0198fab05b716368b19f8c2185d53d6f3b
+  NSLogger: 84ed0bf00985df483153ce344d8171c9ec83be2b
+  NSLogger-CocoaLumberjack-connector: 8f659ea51386f0a0e8c2643bf9273010a83a15f5
+  NSTimer-Blocks: 0a653b84ab33068a085f5c03c82c18be1f61eba9
+  OHHTTPStubs: 6aaaa08e9763f5d8013128a885e8a54a3b678606
+  Orbiter: 3218447c4c839c6fe37fd4ba8fc80395ca49f625
+  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  SSZipArchive: 11299a4e89821bd4085b12f25edaa85853e0051c
+  SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
+  TPKeyboardAvoiding: 925e1e1912597d1a4956697eec3bd9656552153c
+  UIAlertView-Blocks: f3271e84372beb97aea115cd1fb26ae66457f12f
+  UIImage-Categories: 99245612a4725173db4f0a9ed8ba9dbe2a1e0b4f
+
+COCOAPODS: 0.35.0
