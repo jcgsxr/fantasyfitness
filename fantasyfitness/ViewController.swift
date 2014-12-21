@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		super.viewDidLoad()
 
 		if (NSClassFromString("HKHealthStore") != nil && HKHealthStore.isHealthDataAvailable()) {
-			SVProgressHUD.showWithStatus("Loading Data...")
+			MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
 			
 			let healthStore: HKHealthStore = HKHealthStore()
 			let objectTypes: NSSet = NSSet(object: HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount))
@@ -71,19 +71,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 							// Save copy of the statistics, then load data in the table view.
 							self.statistics = results.statistics()
 
-							dispatch_async(dispatch_get_main_queue()) {
+							dispatch_async(dispatch_get_main_queue(), { () -> Void in
 								self.tableView.reloadData()
-								SVProgressHUD.dismiss()
-							}
+								MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+							})
 						}
 
 						// Execute the query
 						healthStore.executeQuery(query)
 					}
 					else {
-						dispatch_async(dispatch_get_main_queue()) {
-							SVProgressHUD.dismiss()
-						}
+						dispatch_async(dispatch_get_main_queue(), { () -> Void in
+							let blah: Int = 0
+							MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+						})
 					}
 			})
 		}
