@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5027118F3487C09696C7E6AE"
+               BlueprintIdentifier = "9782091E25763AD13FF354E1"
                BuildableName = "libPods-NewRelicAgent.a"
                BlueprintName = "Pods-NewRelicAgent"
                ReferencedContainer = "container:Pods.xcodeproj">

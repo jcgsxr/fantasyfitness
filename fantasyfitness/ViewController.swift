@@ -21,9 +21,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		
+
 		if (NSClassFromString("HKHealthStore") != nil && HKHealthStore.isHealthDataAvailable()) {
+			SVProgressHUD.showWithStatus("Loading Data...")
+			
 			let healthStore: HKHealthStore = HKHealthStore()
 			let objectTypes: NSSet = NSSet(object: HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount))
 			healthStore.requestAuthorizationToShareTypes(nil,
@@ -66,26 +67,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 								println(error)
 								abort()
 							}
-							
+
+							// Save copy of the statistics, then load data in the table view.
 							self.statistics = results.statistics()
 
-//							for statistics in results.statistics() as [HKStatistics]! {
-//								if let quantity = statistics.sumQuantity() {
-//									let date = statistics.startDate
-//									let value = quantity.doubleValueForUnit(HKUnit.countUnit())
-//
-//									println("date:\(date) steps:\(value)")
-//								}
-//							}
-							
-							self.tableView.reloadData()
+							dispatch_async(dispatch_get_main_queue()) {
+								self.tableView.reloadData()
+								SVProgressHUD.dismiss()
+							}
 						}
 
 						// Execute the query
 						healthStore.executeQuery(query)
 					}
 					else {
-						
+						dispatch_async(dispatch_get_main_queue()) {
+							SVProgressHUD.dismiss()
+						}
 					}
 			})
 		}

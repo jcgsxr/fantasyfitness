@@ -75,7 +75,7 @@ DEPENDENCIES:
   - Orbiter (~> 2.0)
   - SDWebImage (~> 3.7)
   - SSZipArchive (~> 0.3.1)
-  - SVProgressHUD (~> 1.0)
+  - SVProgressHUD (~> 1.1)
   - TPKeyboardAvoiding (~> 1.2)
   - UIAlertView-Blocks (~> 1.0)
   - UIImage-Categories (~> 0.0.1)
