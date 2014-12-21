@@ -9,8 +9,16 @@
 import UIKit
 import HealthKit
 
-class ViewController: UIViewController {
+class LLStepCell: UITableViewCell {
+	@IBOutlet weak var dateLabel: UILabel!
+	@IBOutlet weak var stepsLabel: UILabel!
+}
 
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+	@IBOutlet weak var tableView: UITableView!
+	var statistics: NSArray?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -59,20 +67,18 @@ class ViewController: UIViewController {
 								abort()
 							}
 							
-							let endDate = NSDate()
-							let startDate = NSDate(timeIntervalSince1970: 0)
+							self.statistics = results.statistics()
+
+//							for statistics in results.statistics() as [HKStatistics]! {
+//								if let quantity = statistics.sumQuantity() {
+//									let date = statistics.startDate
+//									let value = quantity.doubleValueForUnit(HKUnit.countUnit())
+//
+//									println("date:\(date) steps:\(value)")
+//								}
+//							}
 							
-							// Print steps per day.
-							results.enumerateStatisticsFromDate(startDate, toDate: endDate) {
-								statistics, stop in
-								
-								if let quantity = statistics.sumQuantity() {
-									let date = statistics.startDate
-									let value = quantity.doubleValueForUnit(HKUnit.countUnit())
-									
-									println("date:\(date) steps:\(value)")
-								}
-							}
+							self.tableView.reloadData()
 						}
 
 						// Execute the query
@@ -90,6 +96,38 @@ class ViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 
+	// MARK: UITableViewDelegate
+	
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		var cell: LLStepCell = tableView.dequeueReusableCellWithIdentifier("stepCell") as LLStepCell
+		
+		if statistics == nil {
+			return cell
+		}
+		
+		let stat: HKStatistics = statistics![indexPath.row] as HKStatistics
+		
+		cell.dateLabel.text = NSDateFormatter.localizedStringFromDate(
+			stat.startDate,
+			dateStyle: NSDateFormatterStyle.ShortStyle,
+			timeStyle: NSDateFormatterStyle.ShortStyle)
 
+		var value: Double = 0
+		if let quantity = stat.sumQuantity() {
+			value = quantity.doubleValueForUnit(HKUnit.countUnit())
+		}
+		
+		cell.stepsLabel.text = String(format: "%.1f", value)
+		
+		return cell
+	}
+
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		if statistics == nil {
+			return 0
+		}
+		
+		return self.statistics!.count
+	}
 }
 
