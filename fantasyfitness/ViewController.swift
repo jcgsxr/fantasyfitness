@@ -30,7 +30,7 @@ class ViewController: UIViewController {
 						// Use the sample type for step count
 						let quantityType: HKQuantityType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
 						
-						// Your interval: sum by hour
+						// Your interval: sum by day
 						var intervalComponents: NSDateComponents = NSDateComponents()
 						intervalComponents.day = 1;
 						
@@ -53,35 +53,28 @@ class ViewController: UIViewController {
 							intervalComponents: intervalComponents)
 						
 						query.initialResultsHandler = {
-							(query: HKStatisticsCollectionQuery!, result: HKStatisticsCollection!, error: NSError!) -> Void in
+							query, results, error in
 							if error != nil {
 								println(error)
-								return
+								abort()
 							}
-							println(result)
 							
+							let endDate = NSDate()
+							let startDate = NSDate(timeIntervalSince1970: 0)
+							
+							// Print steps per day.
+							results.enumerateStatisticsFromDate(startDate, toDate: endDate) {
+								statistics, stop in
+								
+								if let quantity = statistics.sumQuantity() {
+									let date = statistics.startDate
+									let value = quantity.doubleValueForUnit(HKUnit.countUnit())
+									
+									println("date:\(date) steps:\(value)")
+								}
+							}
 						}
 
-
-						// Get results in day format instead of small increments.
-//						var sampleQuery: HKSampleQuery = HKSampleQuery(
-//							sampleType: sampleType,
-//							predicate: predicate,
-//							limit: 0,
-//							sortDescriptors: [sortDescriptor],
-//							resultsHandler: { (query: HKSampleQuery!, results: [AnyObject]!, error: NSError?) -> Void in
-//								if error != nil {
-//									println(error)
-//									return
-//								}
-//								for result in results as [HKQuantitySample]! {
-//									println(result)
-//								}
-//						})
-						
-						
-
-						
 						// Execute the query
 						healthStore.executeQuery(query)
 					}
